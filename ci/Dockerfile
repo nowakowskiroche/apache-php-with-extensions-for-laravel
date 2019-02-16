@@ -10,7 +10,6 @@ RUN apt-get install -y automake \
     libnotify-bin \
     libpng-dev \
     libtool \
-    mc \
     mysql-client \ 
     nasm \
     python-pip \
@@ -42,7 +41,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install AWS CLI, we need it for deployment tooling, but you may not
 RUN pip install awscli && ln -s /usr/local/bin/aws /usr/bin/aws
 
-# Install nodejs, we use the same container for both running and building, you may not need it. 
+# Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash && apt-get install -y nodejs && npm install -g gulp bower
 
 # Install git lfs
