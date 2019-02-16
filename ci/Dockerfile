@@ -13,7 +13,9 @@ RUN apt-get install --no-install-recommends -y automake \
     mysql-client \
     nasm \
     python-pip \
+    python-setuptools \
     software-properties-common \
+    unzip \
     zip \
     zlib1g-dev
 
