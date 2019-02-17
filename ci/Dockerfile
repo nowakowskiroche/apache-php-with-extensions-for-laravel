@@ -4,7 +4,6 @@ RUN apt-get install --no-install-recommends -y automake \
     bash \
     ca-certificates \
     curl \
-    git \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libnotify-bin \
@@ -48,6 +47,7 @@ RUN pip install awscli && ln -s /usr/local/bin/aws /usr/bin/aws
 RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash && apt-get install --no-install-recommends -y nodejs && npm install -g gulp bower
 
 # Install git lfs
-RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+RUN add-apt-repository ppa:git-core/ppa -y && apt-get install
+--no-install-recommends -y git && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
     apt-get install --no-install-recommends -y git-lfs && \
     git lfs install && rm -rf /var/lib/apt/lists/* # cleanup caches when we're done
