@@ -14,6 +14,7 @@ RUN apt-get install --no-install-recommends -y automake \
     nasm \
     python-pip \
     python-setuptools \
+    openssh-client \
     software-properties-common \
     unzip \
     zip \
