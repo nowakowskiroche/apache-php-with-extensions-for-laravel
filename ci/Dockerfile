@@ -9,6 +9,12 @@ RUN apt-get install --no-install-recommends -y automake \
     libnotify-bin \
     libpng-dev \
     libtool \
+    libssl-dev \
+    libghc-zlib-dev \
+    libcurl4-gnutls-dev \
+    libexpat1-dev \
+    gettext \ 
+    make \
     mysql-client \
     nasm \
     python-pip \
@@ -49,9 +55,14 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash && apt-get install --
 
 # Install git lfs
 
-RUN add-apt-repository 'deb http://ppa.launchpad.net/git-core/ppa/ubuntu disco Release' -y && \ 
+RUN wget https://github.com/git/git/archive/v2.21.0.zip -O git.zip && \
+    unzip git.zip && \
+    cd git-* && \
+    make prefix=/usr/local all && \
+    make prefix=/usr/local install
+
+RUN  -y && \ 
     apt-get update && \
-    apt-get install --no-install-recommends -y git && \
     curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
     apt-get install --no-install-recommends -y git-lfs && \
     git lfs install && \ 
