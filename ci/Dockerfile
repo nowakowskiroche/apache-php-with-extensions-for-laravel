@@ -48,7 +48,8 @@ RUN pip install awscli && ln -s /usr/local/bin/aws /usr/bin/aws
 RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash && apt-get install --no-install-recommends -y nodejs && npm install -g gulp bower
 
 # Install git lfs
-RUN add-apt-repository ppa:git-core/ppa -y && \ 
+
+RUN add-apt-repository 'deb http://ppa.launchpad.net/git-core/ppa/ubuntu disco Release' -y && \ 
     apt-get update && \
     apt-get install --no-install-recommends -y git && \
     curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
