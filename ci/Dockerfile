@@ -23,6 +23,7 @@ RUN apt-get install --no-install-recommends -y automake \
     openssh-client \
     software-properties-common \
     unzip \
+    wget \
     zip \
     zlib1g-dev
 
