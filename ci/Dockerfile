@@ -61,9 +61,7 @@ RUN wget https://github.com/git/git/archive/v2.21.0.zip -O git.zip && \
     make prefix=/usr/local all && \
     make prefix=/usr/local install
 
-RUN  -y && \ 
-    apt-get update && \
-    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
     apt-get install --no-install-recommends -y git-lfs && \
     git lfs install && \ 
     rm -rf /var/lib/apt/lists/* # cleanup caches when we're done
