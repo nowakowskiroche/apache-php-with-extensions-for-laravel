@@ -49,6 +49,7 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash && apt-get install --
 
 # Install git lfs
 RUN add-apt-repository ppa:git-core/ppa -y && \ 
+    apt-get update && \
     apt-get install --no-install-recommends -y git && \
     curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
     apt-get install --no-install-recommends -y git-lfs && \
