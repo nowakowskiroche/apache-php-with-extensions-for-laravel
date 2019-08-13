@@ -7,6 +7,7 @@ RUN apt-get install --no-install-recommends -y curl \
     libtool \
     mysql-client \
     zlib1g-dev \
+    vim \
     && rm -rf /var/lib/apt/lists/* # cleanup caches when we're done
 
 # Enable Apache Extensions We Need
