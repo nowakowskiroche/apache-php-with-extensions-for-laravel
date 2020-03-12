@@ -6,7 +6,7 @@ RUN apt-get install --no-install-recommends -y curl \
     libpng-dev \
     libpq-dev \
     libtool \
-    mysql-client \
+    default-mysql-client \
     zlib1g-dev \
     vim \
     && rm -rf /var/lib/apt/lists/* # cleanup caches when we're done
