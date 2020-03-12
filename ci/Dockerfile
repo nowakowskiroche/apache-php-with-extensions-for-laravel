@@ -16,7 +16,7 @@ RUN apt-get install --no-install-recommends -y automake \
     libexpat1-dev \
     gettext \ 
     make \
-    mysql-client \
+    default-mysql-client \
     nasm \
     python-pip \
     python-setuptools \
