@@ -6,6 +6,7 @@ RUN apt-get install --no-install-recommends -y curl \
     libpng-dev \
     libpq-dev \
     libtool \
+    libzip-dev \
     default-mysql-client \
     zlib1g-dev \
     vim \

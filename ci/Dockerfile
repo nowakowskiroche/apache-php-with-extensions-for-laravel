@@ -11,6 +11,7 @@ RUN apt-get install --no-install-recommends -y automake \
     libpq-dev \
     libtool \
     libssl-dev \
+    libzip-dev \
     libghc-zlib-dev \
     libcurl4-gnutls-dev \
     libexpat1-dev \
