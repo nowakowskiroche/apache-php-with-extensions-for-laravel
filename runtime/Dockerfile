@@ -4,6 +4,7 @@ RUN apt-get install --no-install-recommends -y curl \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
+    libpq-dev \
     libtool \
     mysql-client \
     zlib1g-dev \
@@ -25,4 +26,4 @@ RUN a2enmod proxy \
     vhost_alias
 
 # Configure GD for Glide Image Resizing
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install pdo pdo_mysql zip mysqli gd opcache pcntl exif bcmath
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install pdo pdo_mysql pdo_pgsql pgsql zip mysqli gd opcache pcntl exif bcmath
