@@ -26,7 +26,9 @@ RUN apt-get install --no-install-recommends -y automake \
     unzip \
     wget \
     zip \
-    zlib1g-dev
+    zlib1g-dev \
+    g++ \
+    vim
 
 # Enable Apache Extensions We Need
 RUN a2enmod proxy \
@@ -42,8 +44,11 @@ RUN a2enmod proxy \
     expires \
     vhost_alias
 
+# Install Pecl Dependencies
+RUN pecl install grpc
+
 # Configure GD for Glide Image Resizing
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install pdo pdo_mysql pdo_pgsql pgsql zip mysqli gd opcache pcntl exif bcmath
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install pdo pdo_mysql pdo_pgsql pgsql zip mysqli gd opcache pcntl exif bcmath && docker-php-ext-enable grpc
 
 # Install Composer with prestissimo for faster downloads
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \

@@ -8,7 +8,7 @@ RUN apt-get install --no-install-recommends -y curl \
     libtool \
     default-mysql-client \
     zlib1g-dev \
-    vim \
+    g++ \
     && rm -rf /var/lib/apt/lists/* # cleanup caches when we're done
 
 # Enable Apache Extensions We Need
@@ -25,5 +25,8 @@ RUN a2enmod proxy \
     expires \
     vhost_alias
 
+# Install Pecl Dependencies
+RUN pecl install grpc
+
 # Configure GD for Glide Image Resizing
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install pdo pdo_mysql pdo_pgsql pgsql zip mysqli gd opcache pcntl exif bcmath
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install pdo pdo_mysql pdo_pgsql pgsql zip mysqli gd opcache pcntl exif bcmath && docker-php-ext-enable grpc
