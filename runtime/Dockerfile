@@ -11,6 +11,9 @@ RUN apt-get install --no-install-recommends -y curl \
     g++ \
     && rm -rf /var/lib/apt/lists/* # cleanup caches when we're done
 
+# Make sure we're using the right security level so things don't break
+RUN vi -c '%s/SECLEVEL=2/SECLEVEL=1/g' /etc/ssl/openssl.cnf -c 'wq' 
+
 # Enable Apache Extensions We Need
 RUN a2enmod proxy \
     proxy_ajp \

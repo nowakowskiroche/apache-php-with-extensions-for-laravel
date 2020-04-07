@@ -1,4 +1,5 @@
 FROM php:7.2-apache
+
 RUN apt-get update && apt-get install --no-install-recommends -y gnupg && apt-key update -y
 RUN apt-get install --no-install-recommends -y automake \
     bash \
@@ -29,6 +30,9 @@ RUN apt-get install --no-install-recommends -y automake \
     zlib1g-dev \
     g++ \
     vim
+
+# Make sure we're using the right security level so things don't break
+RUN vi -c '%s/SECLEVEL=2/SECLEVEL=1/g' /etc/ssl/openssl.cnf -c 'wq' 
 
 # Enable Apache Extensions We Need
 RUN a2enmod proxy \
@@ -61,7 +65,6 @@ RUN pip install awscli && ln -s /usr/local/bin/aws /usr/bin/aws
 RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash && apt-get install --no-install-recommends -y nodejs && npm install -g gulp bower
 
 # Install git lfs
-
 RUN wget https://github.com/git/git/archive/v2.21.0.zip -O git.zip && \
     unzip git.zip && \
     cd git-* && \
