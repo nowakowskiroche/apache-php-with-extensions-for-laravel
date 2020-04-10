@@ -9,6 +9,7 @@ RUN apt-get install --no-install-recommends -y curl \
     default-mysql-client \
     zlib1g-dev \
     g++ \
+    vim
     && rm -rf /var/lib/apt/lists/* # cleanup caches when we're done
 
 # Make sure we're using the right security level so things don't break
